@@ -1,11 +1,26 @@
-# purescript-book
+# Purescript by Example - Exercise solutions
 
-Text and exercises for the PureScript book
+A fork of Phil Freeman's purescript-book, with exercise solutions.
 
-## Please do not open PRs on this repo
+## Exercises
 
-Please don't make pull requests here. I don't accept pull requests on this repository.
+The currently included solutions are listed below. Solutions are added as I progress with the book and material.
 
-If you notice an issue, please file an issue instead.
+Solutions:
 
-Thanks.
+- Chapter 2.
+- Chapter 3.
+
+To do:
+
+- Chapter 4.
+- Chapter 5.
+- Chapter 6.
+- Chapter 7.
+- Chapter 8.
+- Chapter 9.
+- Chapter 10.
+- Chapter 11.
+- Chapter 12.
+- Chapter 13.
+- Chapter 14.
