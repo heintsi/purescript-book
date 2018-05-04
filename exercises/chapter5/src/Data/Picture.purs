@@ -20,6 +20,7 @@ data Shape
   | Rectangle Point Number Number
   | Line Point Point
   | Text Point String
+  | Clipped Picture Shape
 
 showShape :: Shape -> String
 showShape (Circle c r) =
@@ -30,6 +31,8 @@ showShape (Line start end) =
   "Line [start: " <> showPoint start <> ", end: " <> showPoint end <> "]"
 showShape (Text loc text) =
   "Text [location: " <> showPoint loc <> ", text: " <> show text <> "]"
+showShape (Clipped pic shape) =
+  "Clipped Picture [bounding shape: " <> showShape shape <> "]"
 
 type Picture = Array Shape
 
@@ -76,6 +79,16 @@ shapeBounds (Text (Point { x, y }) _) = Bounds
   , bottom: y
   , right:  x
   }
+shapeBounds (Clipped pic shape) = Bounds
+  { top:    Math.min pb.top sb.top -- max y of p's shapes and then min y of that and s
+  , left:   Math.max pb.left sb.left
+  , bottom: Math.max pb.bottom sb.bottom
+  , right:  Math.min pb.right sb.right
+  }
+    where
+    Bounds pb = bounds pic
+    Bounds sb = shapeBounds shape
+
 
 union :: Bounds -> Bounds -> Bounds
 union (Bounds b1) (Bounds b2) = Bounds
